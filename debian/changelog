@@ -1,5 +1,10 @@
-x42-lv2-plugins (0.1.1-0.1) unstable; urgency=low
+x42-lv2-plugins (20130611-0.1) unstable; urgency=low
 
   * locally created custom package for upstream testing
+  * 'balance.lv2' v0.4.0
+  * 'convoLV2' v0.2
+  * 'midifilter.lv2' v0.1.0
+  * 'nodelay.lv2' v0.1.0
+  * 'xfade.lv2' v0.1.0
 
- -- Robin Gareus <robin@gareus.org>  Sat, 25 May 2013 02:23:22 +0200
+ -- Robin Gareus <robin@gareus.org>  Wed, 12 Jun 2013 12:14:07 +0200
