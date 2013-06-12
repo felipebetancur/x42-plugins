@@ -3,19 +3,23 @@
 GITMASTER=${GITBRANCH:-master}
 GITDEBIAN=${GITBRANCH:-debian}
 
-echo -n "update submodules to latest rev? [N/y]"
+echo -n "update submodules to latest tagged rev? [N/y]"
 read -n1 a
 echo
 if test "$a" == "y" -a "$a" == "Y"; then
 	git checkout $GITMASTER
-	make update
+	make tagupdate
 fi
 
 git checkout $GITDEBIAN || git checkout -b $GITDEBIAN origin/$GITDEBIAN || exit
 git merge --no-edit $GITMASTER
 
+VERSION=$(git submodule --quiet foreach git show -s --format="%ci" HEAD | cut -d' ' -f 1 | sed 's/-//g' | sort -nr | head -n 1)
+REVISIONS=$(git submodule foreach git describe --tags | tr "\n" " " | sed 's/Entering /\* /g')
+
 # interactively edit changelog
-debchange --distribution unstable
+debchange --distribution unstable --newversion "${VERSION}-0.1" "versions: ${REVISIONS}"
+debchange --edit
 git commit debian/changelog -m "finalize changelog"
 
 DEBRELEASE=$(head -n1 debian/changelog | cut -d ' ' -f 2 | sed 's/[()]*//g')
