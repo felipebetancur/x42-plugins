@@ -13,3 +13,12 @@
 [submodule "midifilter.lv2"]
 	path = midifilter.lv2
 	url = git://github.com/x42/midifilter.lv2.git
+[submodule "meters.lv2"]
+	path = meters.lv2
+	url = git://github.com/x42/meters.lv2.git
+[submodule "robtk"]
+	path = robtk
+	url = git://github.com/x42/robtk
+[submodule "sisco.lv2"]
+	path = sisco.lv2
+	url = git://github.com/x42/sisco.lv2
